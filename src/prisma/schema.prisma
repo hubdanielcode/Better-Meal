@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id             String    @id @default(uuid())
+  email          String    @unique
+  password       String
+  token          String?
+  tokenExpiresAt DateTime? @map("token_expires_at")
+
+  profile Profile?
+}
+
+model Profile {
+  id           String     @id @default(uuid())
+  userId       String     @unique @map("user_id")
+  userEmail    String     @unique @map("user_email")
+  userAvatar   String?    @map("user_avatar")
+  isSubscribed Boolean    @default(false) @map("is_subscribed")
+  activePlan   ActivePlan @default(nenhum) @map("active_plan")
+
+  subscriptionExpiresAt DateTime? @map("subscription_expires_at")
+  createdAt             DateTime  @default(now()) @map("created_at")
+  updatedAt             DateTime  @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+enum ActivePlan {
+  semana
+  mês
+  ano
+  nenhum
+}
