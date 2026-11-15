@@ -5,34 +5,49 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  output   = "./generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
 }
 
+model Session {
+  id     String @id @default(uuid())
+  userId String @map("user_id")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  expiresAt DateTime  @map("expires_at")
+  revokedAt DateTime? @map("revoked_at")
+
+  user User @relation(fields: [userId], references: [id])
+}
+
 model User {
-  id             String    @id @default(uuid())
-  email          String    @unique
-  password       String
-  token          String?
+  id              String  @id @default(uuid())
+  email           String  @unique
+  password        String?
+  pendingPassword String? @map("pending_password")
+  token           String? @unique
+
   tokenExpiresAt DateTime? @map("token_expires_at")
 
-  profile Profile?
+  profile  Profile?
+  sessions Session[]
 }
 
 model Profile {
-  id           String     @id @default(uuid())
-  userId       String     @unique @map("user_id")
-  userEmail    String     @unique @map("user_email")
-  userAvatar   String?    @map("user_avatar")
-  isSubscribed Boolean    @default(false) @map("is_subscribed")
-  activePlan   ActivePlan @default(nenhum) @map("active_plan")
+  id                    String     @id @default(uuid())
+  userId                String     @unique @map("user_id")
+  userEmail             String     @unique @map("user_email")
+  userAvatar            String?    @map("user_avatar")
+  stripeSubscriptionId  String?    @unique @map("stripe_subscription_id")
+  isSubscribed          Boolean    @default(false) @map("is_subscribed")
+  activePlan            ActivePlan @default(nenhum) @map("active_plan")
+  subscriptionExpiresAt DateTime?  @map("subscription_expires_at")
 
-  subscriptionExpiresAt DateTime? @map("subscription_expires_at")
-  createdAt             DateTime  @default(now()) @map("created_at")
-  updatedAt             DateTime  @updatedAt @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   user User @relation(fields: [userId], references: [id])
 }

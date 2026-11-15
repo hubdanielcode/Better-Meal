@@ -6,5 +6,14 @@ export interface planTypeProps {
   isPopular: boolean;
   description: string;
   price: number;
+  status: "Ativo" | "Inativo";
   features: string[];
+}
+
+export interface SubscriptionStatusResponseProps {
+  subscription: {
+    activePlan: ActivePlan;
+  };
+
+  isError?: string;
 }

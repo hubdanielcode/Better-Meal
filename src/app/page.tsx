@@ -1,24 +1,23 @@
-"use client";
-
-import { useState } from "react";
+import { getCurrentUser } from "@/actions/authentication/default-signup/getCurrentUser";
 import Link from "next/link";
 
-const MainPage = () => {
-  const [signedIn, setSignedIn] = useState<boolean>(true);
+const MainPage = async () => {
+  const user = await getCurrentUser();
+  const isSubscribed = user?.profile?.isSubscribed;
 
   return (
     <div className="flex flex-col px-4 pb-8 sm:pb-12 lg:pb-16 max-w-7xl mx-auto">
       {/* - Seção 1: Card Central - */}
 
       <section className="flex flex-col items-center justify-center w-full text-white bg-linear-to-br from-[#07BA61] via-[#0ABC6C] to-[#0EBA7B] rounded-xl shadow-lg shadow-black/40 mb-10">
-        <h1 className="text-4xl font-bold mt-6 text-shadow-lg text-shadow-emerald-950/60">Planos Personalizados</h1>
+        <h1 className="text-4xl font-bold mt-6 text-shadow-lg text-shadow-black/60">Planos Personalizados</h1>
 
         <p className="text-xl mt-4 mb-1 text-shadow-sm text-shadow-black/60">Deixe o planejamento para a nossa Inteligência Artificial</p>
 
         <p className="mt-1 mb-6 text-shadow-sm text-shadow-black/60">Apenas foque em segui-lo e alcançar seu objetivo!</p>
 
         <Link
-          href={signedIn ? "/dieta" : "/cadastro"}
+          href={!user ? "/cadastro" : isSubscribed ? "/dieta" : "/assinaturas"}
           className="group bg-gray-100 hover:bg-gray-300 px-4 py-2 rounded-lg shadow-md shadow-black/40 mb-6 transition cursor-pointer"
         >
           <span className="text-transparent text-shadow-xs text-shadow-emerald-950/50 font-semibold bg-clip-text bg-linear-to-br from-[#07BA61] via-[#0ABC6C] to-[#0EBA7B] group-hover:from-[#059650] group-hover:via-[#078F52] group-hover:to-[#0A9462]">

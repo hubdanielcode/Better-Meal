@@ -1,7 +1,14 @@
+"use client";
+
 import { PlanCard } from "@/features/users/subscription/components/PlanCard";
 import { planTypes } from "@/features/users/subscription/utils/constants/planTypes";
+import { useRouter } from "next/navigation";
 
 const Subscription = () => {
+  /* - Definições - */
+
+  const router = useRouter();
+
   return (
     <div className="flex flex-col items-center justify-start min-h-[calc(100vh-7rem)] max-w-full">
       <h1 className="text-4xl font-bold text-gray-900 text-shadow-sm text-shadow-white tracking-tight">Preço</h1>

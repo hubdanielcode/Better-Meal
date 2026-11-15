@@ -1,18 +1,13 @@
 @import "tailwindcss";
 
-/* - Removendo o css padrão de navegadores como chrome e safari - */
+/* - Removendo o css padrão do autocomplete do navegador - */
 
 input:-webkit-autofill,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active,
 input:-webkit-autofill:hover {
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
-  -webkit-text-fill-color: black;
+  -webkit-box-shadow: 0 0 0 30px inset white !important;
+  -webkit-background-color: transparent;
   font-size: 14px;
   font-weight: 400;
-  background-color: transparent 5000s ease-in-out 0s;
-}
-
-body {
-  scroll-behavior: smooth;
 }

@@ -51,6 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  Session: 'Session',
   User: 'User',
   Profile: 'Profile'
 } as const
@@ -71,10 +72,22 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const SessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  expiresAt: 'expiresAt',
+  revokedAt: 'revokedAt'
+} as const
+
+export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   password: 'password',
+  pendingPassword: 'pendingPassword',
   token: 'token',
   tokenExpiresAt: 'tokenExpiresAt'
 } as const
@@ -87,6 +100,7 @@ export const ProfileScalarFieldEnum = {
   userId: 'userId',
   userEmail: 'userEmail',
   userAvatar: 'userAvatar',
+  stripeSubscriptionId: 'stripeSubscriptionId',
   isSubscribed: 'isSubscribed',
   activePlan: 'activePlan',
   subscriptionExpiresAt: 'subscriptionExpiresAt',

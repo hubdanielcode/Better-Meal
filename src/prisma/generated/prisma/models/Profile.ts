@@ -29,6 +29,7 @@ export type ProfileMinAggregateOutputType = {
   userId: string | null
   userEmail: string | null
   userAvatar: string | null
+  stripeSubscriptionId: string | null
   isSubscribed: boolean | null
   activePlan: $Enums.ActivePlan | null
   subscriptionExpiresAt: Date | null
@@ -41,6 +42,7 @@ export type ProfileMaxAggregateOutputType = {
   userId: string | null
   userEmail: string | null
   userAvatar: string | null
+  stripeSubscriptionId: string | null
   isSubscribed: boolean | null
   activePlan: $Enums.ActivePlan | null
   subscriptionExpiresAt: Date | null
@@ -53,6 +55,7 @@ export type ProfileCountAggregateOutputType = {
   userId: number
   userEmail: number
   userAvatar: number
+  stripeSubscriptionId: number
   isSubscribed: number
   activePlan: number
   subscriptionExpiresAt: number
@@ -67,6 +70,7 @@ export type ProfileMinAggregateInputType = {
   userId?: true
   userEmail?: true
   userAvatar?: true
+  stripeSubscriptionId?: true
   isSubscribed?: true
   activePlan?: true
   subscriptionExpiresAt?: true
@@ -79,6 +83,7 @@ export type ProfileMaxAggregateInputType = {
   userId?: true
   userEmail?: true
   userAvatar?: true
+  stripeSubscriptionId?: true
   isSubscribed?: true
   activePlan?: true
   subscriptionExpiresAt?: true
@@ -91,6 +96,7 @@ export type ProfileCountAggregateInputType = {
   userId?: true
   userEmail?: true
   userAvatar?: true
+  stripeSubscriptionId?: true
   isSubscribed?: true
   activePlan?: true
   subscriptionExpiresAt?: true
@@ -176,6 +182,7 @@ export type ProfileGroupByOutputType = {
   userId: string
   userEmail: string
   userAvatar: string | null
+  stripeSubscriptionId: string | null
   isSubscribed: boolean
   activePlan: $Enums.ActivePlan
   subscriptionExpiresAt: Date | null
@@ -209,6 +216,7 @@ export type ProfileWhereInput = {
   userId?: Prisma.StringFilter<"Profile"> | string
   userEmail?: Prisma.StringFilter<"Profile"> | string
   userAvatar?: Prisma.StringNullableFilter<"Profile"> | string | null
+  stripeSubscriptionId?: Prisma.StringNullableFilter<"Profile"> | string | null
   isSubscribed?: Prisma.BoolFilter<"Profile"> | boolean
   activePlan?: Prisma.EnumActivePlanFilter<"Profile"> | $Enums.ActivePlan
   subscriptionExpiresAt?: Prisma.DateTimeNullableFilter<"Profile"> | Date | string | null
@@ -222,6 +230,7 @@ export type ProfileOrderByWithRelationInput = {
   userId?: Prisma.SortOrder
   userEmail?: Prisma.SortOrder
   userAvatar?: Prisma.SortOrderInput | Prisma.SortOrder
+  stripeSubscriptionId?: Prisma.SortOrderInput | Prisma.SortOrder
   isSubscribed?: Prisma.SortOrder
   activePlan?: Prisma.SortOrder
   subscriptionExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -234,6 +243,7 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   userId?: string
   userEmail?: string
+  stripeSubscriptionId?: string
   AND?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   OR?: Prisma.ProfileWhereInput[]
   NOT?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
@@ -244,13 +254,14 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Profile"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-}, "id" | "userId" | "userEmail">
+}, "id" | "userId" | "userEmail" | "stripeSubscriptionId">
 
 export type ProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   userEmail?: Prisma.SortOrder
   userAvatar?: Prisma.SortOrderInput | Prisma.SortOrder
+  stripeSubscriptionId?: Prisma.SortOrderInput | Prisma.SortOrder
   isSubscribed?: Prisma.SortOrder
   activePlan?: Prisma.SortOrder
   subscriptionExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -269,6 +280,7 @@ export type ProfileScalarWhereWithAggregatesInput = {
   userId?: Prisma.StringWithAggregatesFilter<"Profile"> | string
   userEmail?: Prisma.StringWithAggregatesFilter<"Profile"> | string
   userAvatar?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
+  stripeSubscriptionId?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   isSubscribed?: Prisma.BoolWithAggregatesFilter<"Profile"> | boolean
   activePlan?: Prisma.EnumActivePlanWithAggregatesFilter<"Profile"> | $Enums.ActivePlan
   subscriptionExpiresAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Profile"> | Date | string | null
@@ -280,6 +292,7 @@ export type ProfileCreateInput = {
   id?: string
   userEmail: string
   userAvatar?: string | null
+  stripeSubscriptionId?: string | null
   isSubscribed?: boolean
   activePlan?: $Enums.ActivePlan
   subscriptionExpiresAt?: Date | string | null
@@ -293,6 +306,7 @@ export type ProfileUncheckedCreateInput = {
   userId: string
   userEmail: string
   userAvatar?: string | null
+  stripeSubscriptionId?: string | null
   isSubscribed?: boolean
   activePlan?: $Enums.ActivePlan
   subscriptionExpiresAt?: Date | string | null
@@ -304,6 +318,7 @@ export type ProfileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userEmail?: Prisma.StringFieldUpdateOperationsInput | string
   userAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isSubscribed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   activePlan?: Prisma.EnumActivePlanFieldUpdateOperationsInput | $Enums.ActivePlan
   subscriptionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -317,6 +332,7 @@ export type ProfileUncheckedUpdateInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   userEmail?: Prisma.StringFieldUpdateOperationsInput | string
   userAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isSubscribed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   activePlan?: Prisma.EnumActivePlanFieldUpdateOperationsInput | $Enums.ActivePlan
   subscriptionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -329,6 +345,7 @@ export type ProfileCreateManyInput = {
   userId: string
   userEmail: string
   userAvatar?: string | null
+  stripeSubscriptionId?: string | null
   isSubscribed?: boolean
   activePlan?: $Enums.ActivePlan
   subscriptionExpiresAt?: Date | string | null
@@ -340,6 +357,7 @@ export type ProfileUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userEmail?: Prisma.StringFieldUpdateOperationsInput | string
   userAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isSubscribed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   activePlan?: Prisma.EnumActivePlanFieldUpdateOperationsInput | $Enums.ActivePlan
   subscriptionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -352,6 +370,7 @@ export type ProfileUncheckedUpdateManyInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   userEmail?: Prisma.StringFieldUpdateOperationsInput | string
   userAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isSubscribed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   activePlan?: Prisma.EnumActivePlanFieldUpdateOperationsInput | $Enums.ActivePlan
   subscriptionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -369,6 +388,7 @@ export type ProfileCountOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   userEmail?: Prisma.SortOrder
   userAvatar?: Prisma.SortOrder
+  stripeSubscriptionId?: Prisma.SortOrder
   isSubscribed?: Prisma.SortOrder
   activePlan?: Prisma.SortOrder
   subscriptionExpiresAt?: Prisma.SortOrder
@@ -381,6 +401,7 @@ export type ProfileMaxOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   userEmail?: Prisma.SortOrder
   userAvatar?: Prisma.SortOrder
+  stripeSubscriptionId?: Prisma.SortOrder
   isSubscribed?: Prisma.SortOrder
   activePlan?: Prisma.SortOrder
   subscriptionExpiresAt?: Prisma.SortOrder
@@ -393,6 +414,7 @@ export type ProfileMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   userEmail?: Prisma.SortOrder
   userAvatar?: Prisma.SortOrder
+  stripeSubscriptionId?: Prisma.SortOrder
   isSubscribed?: Prisma.SortOrder
   activePlan?: Prisma.SortOrder
   subscriptionExpiresAt?: Prisma.SortOrder
@@ -440,14 +462,11 @@ export type EnumActivePlanFieldUpdateOperationsInput = {
   set?: $Enums.ActivePlan
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
 export type ProfileCreateWithoutUserInput = {
   id?: string
   userEmail: string
   userAvatar?: string | null
+  stripeSubscriptionId?: string | null
   isSubscribed?: boolean
   activePlan?: $Enums.ActivePlan
   subscriptionExpiresAt?: Date | string | null
@@ -459,6 +478,7 @@ export type ProfileUncheckedCreateWithoutUserInput = {
   id?: string
   userEmail: string
   userAvatar?: string | null
+  stripeSubscriptionId?: string | null
   isSubscribed?: boolean
   activePlan?: $Enums.ActivePlan
   subscriptionExpiresAt?: Date | string | null
@@ -486,6 +506,7 @@ export type ProfileUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userEmail?: Prisma.StringFieldUpdateOperationsInput | string
   userAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isSubscribed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   activePlan?: Prisma.EnumActivePlanFieldUpdateOperationsInput | $Enums.ActivePlan
   subscriptionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -497,6 +518,7 @@ export type ProfileUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userEmail?: Prisma.StringFieldUpdateOperationsInput | string
   userAvatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isSubscribed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   activePlan?: Prisma.EnumActivePlanFieldUpdateOperationsInput | $Enums.ActivePlan
   subscriptionExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -511,6 +533,7 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   userId?: boolean
   userEmail?: boolean
   userAvatar?: boolean
+  stripeSubscriptionId?: boolean
   isSubscribed?: boolean
   activePlan?: boolean
   subscriptionExpiresAt?: boolean
@@ -524,6 +547,7 @@ export type ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   userId?: boolean
   userEmail?: boolean
   userAvatar?: boolean
+  stripeSubscriptionId?: boolean
   isSubscribed?: boolean
   activePlan?: boolean
   subscriptionExpiresAt?: boolean
@@ -537,6 +561,7 @@ export type ProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   userId?: boolean
   userEmail?: boolean
   userAvatar?: boolean
+  stripeSubscriptionId?: boolean
   isSubscribed?: boolean
   activePlan?: boolean
   subscriptionExpiresAt?: boolean
@@ -550,6 +575,7 @@ export type ProfileSelectScalar = {
   userId?: boolean
   userEmail?: boolean
   userAvatar?: boolean
+  stripeSubscriptionId?: boolean
   isSubscribed?: boolean
   activePlan?: boolean
   subscriptionExpiresAt?: boolean
@@ -557,7 +583,7 @@ export type ProfileSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "userEmail" | "userAvatar" | "isSubscribed" | "activePlan" | "subscriptionExpiresAt" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
+export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "userEmail" | "userAvatar" | "stripeSubscriptionId" | "isSubscribed" | "activePlan" | "subscriptionExpiresAt" | "createdAt" | "updatedAt", ExtArgs["result"]["profile"]>
 export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -578,6 +604,7 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     userId: string
     userEmail: string
     userAvatar: string | null
+    stripeSubscriptionId: string | null
     isSubscribed: boolean
     activePlan: $Enums.ActivePlan
     subscriptionExpiresAt: Date | null
@@ -1011,6 +1038,7 @@ export interface ProfileFieldRefs {
   readonly userId: Prisma.FieldRef<"Profile", 'String'>
   readonly userEmail: Prisma.FieldRef<"Profile", 'String'>
   readonly userAvatar: Prisma.FieldRef<"Profile", 'String'>
+  readonly stripeSubscriptionId: Prisma.FieldRef<"Profile", 'String'>
   readonly isSubscribed: Prisma.FieldRef<"Profile", 'Boolean'>
   readonly activePlan: Prisma.FieldRef<"Profile", 'ActivePlan'>
   readonly subscriptionExpiresAt: Prisma.FieldRef<"Profile", 'DateTime'>

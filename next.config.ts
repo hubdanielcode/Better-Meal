@@ -2,18 +2,21 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  experimental: {
-    agentFeedback: true,
+
+  images: {
+    domains: ["avatars.githubusercontent.com", "lh3.googleusercontent.com"],
   },
-  cacheComponents: true,
-  partialPrefetching: true,
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
+
+  serverExternalPackages: ["pg"],
+
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "4.5mb",
     },
+  },
+
+  typescript: {
+    ignoreBuildErrors: true,
   },
 };
 

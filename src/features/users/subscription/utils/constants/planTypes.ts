@@ -7,6 +7,7 @@ const planTypes: planTypeProps[] = [
     isPopular: false,
     description: "Ideal para experimentar o planejamento alientar com IA e organizar suas refeições para os próximos dias.",
     price: 9.99,
+    status: "Ativo",
     features: [
       "Planos alimentares personalizados por IA",
       "Planejamento de refeições para a semana",
@@ -21,7 +22,8 @@ const planTypes: planTypeProps[] = [
     interval: "mês",
     isPopular: true,
     description: "Perfeito para manter a sua alimentação organizada durante todo o mês com praticidade e flexibilidade para adaptar a sua rotina.",
-    price: 39.99,
+    price: 29.99,
+    status: "Ativo",
     features: [
       "Tudo do plano semanal",
       "Planejamento alimentar para o mês inteiro",
@@ -36,7 +38,8 @@ const planTypes: planTypeProps[] = [
     interval: "ano",
     isPopular: false,
     description: "Para quem busca praticidade a longo prazo, com ferramentas inteligentes para planejar a alimentação durante todo o ano.",
-    price: 289.99,
+    price: 359.99,
+    status: "Ativo",
     features: [
       "Tudo do plano mensal",
       "Acesso durante 12 meses",
